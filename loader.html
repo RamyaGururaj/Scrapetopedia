@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scraping in Progress</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #002800;
+      background: linear-gradient(135deg, #002800, #004d00, #001a00);
+      animation: gradientBG 10s infinite;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      padding: 0 20px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    @keyframes gradientBG {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    .container {
+      text-align: left;
+      width: 100%;
+      position: relative;
+      z-index: 10;
+    }
+
+    .message {
+      font-size: 2rem;
+      font-weight: bold;
+      margin: 10px 0;
+      color: #279141;
+      opacity: 0;
+      white-space: pre;
+      padding-top: 5px;
+    }
+
+    .new {
+      font-size: 2.5rem;
+      margin-top: -250px;
+      color: #279141;
+    }
+
+    #particles-js {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+</head>
+<body>
+  <div id="particles-js"></div>
+  <div class="container">
+    <h1 class="new">Scraping in Progress...</h1>
+    <div class="message" id="step1">Extracting Data from Target Website</div>
+    <div class="message" id="step2">Cleaning and Organizing Retrieved Data</div>
+    <div class="message" id="step3">Parsing HTML and Analyzing Content</div>
+    <div class="message" id="step4">Compiling Data into Structured Format</div>
+    <div class="message" id="step5">Exporting Results for Use</div>
+  </div>
+
+  <script>
+    const messages = document.querySelectorAll(".message");
+    let currentIndex = 0;
+
+    function showNextMessage() {
+      if (currentIndex < messages.length) {
+        gsap.to(messages[currentIndex], { opacity: 1, duration: 1 });
+        currentIndex++;
+        setTimeout(showNextMessage, 5000); // Show each message after 5 seconds
+      }
+    }
+
+    showNextMessage();
+
+    // Initialize particles.js
+    particlesJS("particles-js", {
+      "particles": {
+        "number": {
+          "value": 80,
+          "density": {
+            "enable": true,
+            "value_area": 800
+          }
+        },
+        "color": {
+          "value": "#279141"
+        },
+        "shape": {
+          "type": "circle",
+          "stroke": {
+            "width": 0,
+            "color": "#279141"
+          }
+        },
+        "opacity": {
+          "value": 0.5,
+          "random": true,
+          "anim": {
+            "enable": true,
+            "speed": 1,
+            "opacity_min": 0.1
+          }
+        },
+        "size": {
+          "value": 3,
+          "random": true,
+          "anim": {
+            "enable": true,
+            "speed": 2,
+            "size_min": 0.1
+          }
+        },
+        "line_linked": {
+          "enable": true,
+          "distance": 150,
+          "color": "#279141",
+          "opacity": 0.4,
+          "width": 1
+        },
+        "move": {
+          "enable": true,
+          "speed": 6,
+          "direction": "none",
+          "random": true,
+          "straight": false,
+          "out_mode": "out"
+        }
+      },
+      "interactivity": {
+        "detect_on": "window",
+        "events": {
+          "onhover": {
+            "enable": true,
+            "mode": "grab"
+          },
+          "onclick": {
+            "enable": true,
+            "mode": "push"
+          }
+        }
+      },
+      "retina_detect": true
+    });
+  </script>
+</body>
+</html>
